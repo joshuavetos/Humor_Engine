@@ -1,15 +1,14 @@
 import random
 from .models import Premise
 from .knowledge import KnowledgeBase
-from .persona import PERSONAS, DEFAULT_PERSONA
+from .persona import safe_persona
 
 class PremiseEngine:
     def __init__(self, kb: KnowledgeBase):
         self.kb = kb
 
     def generate(self, topic: str, persona: str) -> Premise:
-        # Safe access with default fallback
-        profile = PERSONAS.get(persona, PERSONAS[DEFAULT_PERSONA])
+        profile = safe_persona(persona)
         info = self.kb.get_topic(topic)
 
         # If no dataset entry: synthetic contrarian premise
@@ -33,4 +32,5 @@ class PremiseEngine:
         tension = min(1.0, 0.5 + intensity * 0.5)
 
         return Premise(topic, claim, tension, profile.name)
+
 
