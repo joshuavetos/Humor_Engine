@@ -1,10 +1,10 @@
 import random
 from .models import Tag
-from .persona import PERSONAS, DEFAULT_PERSONA
+from .persona import safe_persona
 
 class TagEngine:
     def generate(self, persona: str, topic: str) -> Tag:
-        profile = PERSONAS.get(persona, PERSONAS[DEFAULT_PERSONA])
+        profile = safe_persona(persona)
 
         aggressive = profile.aggression
         absurd = profile.absurdity
@@ -36,4 +36,5 @@ class TagEngine:
         chosen = random.sample(pool, k=min(num, len(pool)))
 
         return Tag(lines=chosen)
+
 
