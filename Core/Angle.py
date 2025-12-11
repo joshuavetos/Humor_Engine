@@ -1,6 +1,6 @@
 import random
 from .models import Angle
-from .persona import PERSONAS, DEFAULT_PERSONA
+from .persona import safe_persona
 from .knowledge import KnowledgeBase
 
 class AngleEngine:
@@ -8,7 +8,7 @@ class AngleEngine:
         self.kb = kb
 
     def generate(self, premise, turn):
-        profile = PERSONAS.get(premise.persona, PERSONAS[DEFAULT_PERSONA])
+        profile = safe_persona(premise.persona)
         topic = premise.topic
 
         absurd = profile.absurdity
@@ -48,4 +48,5 @@ class AngleEngine:
         absurdity = absurd + random.uniform(0.1, 0.3)
 
         return Angle(text=text, absurdity=absurdity, persona=profile.name)
+
 
