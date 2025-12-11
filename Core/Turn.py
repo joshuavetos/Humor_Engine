@@ -1,6 +1,6 @@
 import random
 from .models import Turn
-from .persona import PERSONAS, DEFAULT_PERSONA
+from .persona import safe_persona
 from .knowledge import KnowledgeBase
 
 class TurnEngine:
@@ -8,7 +8,7 @@ class TurnEngine:
         self.kb = kb
 
     def generate(self, premise):
-        profile = PERSONAS.get(premise.persona, PERSONAS[DEFAULT_PERSONA])
+        profile = safe_persona(premise.persona)
         
         topic = premise.topic
         info = self.kb.get_topic(topic)
@@ -25,4 +25,5 @@ class TurnEngine:
         text = random.choice(base_turns)
 
         return Turn(text=text, tension_shift=tension_shift)
+
 
