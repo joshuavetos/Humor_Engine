@@ -1,10 +1,10 @@
 import random
 from .models import Punch
-from .persona import PERSONAS, DEFAULT_PERSONA
+from .persona import safe_persona
 
 class PunchlineEngine:
     def generate(self, premise, turn, angle):
-        profile = PERSONAS.get(premise.persona, PERSONAS[DEFAULT_PERSONA])
+        profile = safe_persona(premise.persona)
         topic = premise.topic
 
         base_punches = [
@@ -23,4 +23,5 @@ class PunchlineEngine:
 
         text = random.choice(base_punches)
         return Punch(text=text, compression=compression_level)
+
 
