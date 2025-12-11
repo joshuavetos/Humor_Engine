@@ -1,0 +1,11 @@
+pycache/
+*.pyc
+.env
+*.egg-info/
+.vscode/
+.idea/
+.pytest_cache/
+Ignore data files if they are generated/local-only,
+but generally we want knowledge_base tracked and motifs ignored
+humor_engine/data/motifs.json
+humor_engine/data/*.tmp

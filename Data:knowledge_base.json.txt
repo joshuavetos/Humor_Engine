@@ -1,0 +1,27 @@
+{
+"topics": {
+"airports": {
+"schemas": ["efficiency", "safety", "order"],
+"concepts": ["TSA agents", "luggage", "security lines", "boarding groups"]
+},
+"dating": {
+"schemas": ["romance", "compatibility", "destiny"],
+"concepts": ["first dates", "profiles", "awkward texting", "ex-partners"]
+},
+"work": {
+"schemas": ["competence", "productivity", "teamwork"],
+"concepts": ["meetings", "deadlines", "managers", "email chains"]
+}
+},
+"violations": {
+"efficiency": ["a bureaucratic escape room nobody wins"],
+"safety": ["security theater performed by exhausted amateurs"],
+"order": ["chaos cosplay with a PA system"],
+"romance": ["an unpaid internship for emotional labor"],
+"compatibility": ["wishful thinking with better lighting"],
+"destiny": ["a coupon code for loneliness expiring at midnight"],
+"competence": ["googling your way through adulthood"],
+"productivity": ["a spreadsheet-themed hostage situation"],
+"teamwork": ["group suffering optimized for calendar invites"]
+}
+}
