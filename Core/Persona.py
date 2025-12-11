@@ -22,3 +22,10 @@ PERSONAS = {
 
 DEFAULT_PERSONA = "observational"
 
+def safe_persona(name: str) -> PersonaProfile:
+    """Safe lookup wrapper ensuring a valid PersonaProfile is always returned."""
+    if not isinstance(name, str):
+        return PERSONAS[DEFAULT_PERSONA]
+    return PERSONAS.get(name.lower().strip(), PERSONAS[DEFAULT_PERSONA])
+
+
